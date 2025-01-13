@@ -1,5 +1,5 @@
 plugins {
-    id 'net.neoforged.gradle.userdev' version '7.0.43'
+    id 'net.neoforged.gradle.userdev' version '7.0.178'
     id 'net.darkhax.curseforgegradle'
     id 'com.modrinth.minotaur'
 }
@@ -7,7 +7,7 @@ plugins {
 apply from: '../gradle/patreon.gradle'
 
 base {
-    archivesName = "${mod_name}-NeoForge-${minecraft_version}"
+    archivesName = "${mod_name}-neoforge-${minecraft_version}"
 }
 
 runs {
@@ -29,7 +29,7 @@ runs {
 
 dependencies {
     implementation "net.neoforged:neoforge:${neoforge_version}"
-    implementation "net.darkhax.bookshelf:Bookshelf-NeoForge-${project.ext.minecraft_version}:${project.ext.bookshelf_version}"
+    implementation "net.darkhax.bookshelf:bookshelf-neoforge-${project.ext.minecraft_version}:${project.ext.bookshelf_version}"
     compileOnly group: 'me.shedaniel', name: "RoughlyEnoughItems-api-forge", version: rei_version
     testCompileOnly group: 'me.shedaniel', name: "RoughlyEnoughItems-api-forge", version: rei_version
     compileOnly project(':common')
@@ -133,7 +133,7 @@ task publishCurseForge(type: net.darkhax.curseforgegradle.TaskPublishCurseForge)
     def mainFile = upload(curse_project, jar)
     mainFile.changelogType = 'markdown'
     mainFile.changelog = project.ext.mod_changelog
-    mainFile.addJavaVersion('Java 17')
+    mainFile.addJavaVersion('Java 21')
     mainFile.releaseType = 'release'
     mainFile.addGameVersion('Server', 'Client')
     mainFile.addRequirement('bookshelf')

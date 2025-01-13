@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.6-SNAPSHOT'
+    id 'fabric-loom' version '1.9.2'
     id 'net.darkhax.curseforgegradle'
     id 'com.modrinth.minotaur'
     id 'idea'
@@ -21,7 +21,7 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
 
-    modImplementation "net.darkhax.bookshelf:Bookshelf-Fabric-${minecraft_version}:${bookshelf_version}"
+    modImplementation "net.darkhax.bookshelf:bookshelf-fabric-${minecraft_version}:${bookshelf_version}"
     modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:${rei_version}"
 
     implementation project(':common')
@@ -125,7 +125,7 @@ task publishCurseForge(type: net.darkhax.curseforgegradle.TaskPublishCurseForge)
     def mainFile = upload(curse_project, file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar"))
     mainFile.changelogType = 'markdown'
     mainFile.changelog = project.ext.mod_changelog
-    mainFile.addJavaVersion('Java 17')
+    mainFile.addJavaVersion('Java 21')
     mainFile.addRequirement('bookshelf')
     mainFile.addModLoader('Fabric')
     mainFile.addModLoader('Quilt')

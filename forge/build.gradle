@@ -8,7 +8,7 @@ plugins {
 apply from: '../gradle/patreon.gradle'
 
 base {
-    archivesName = "${mod_name}-Forge-${minecraft_version}"
+    archivesName = "${mod_name}-forge-${minecraft_version}"
 }
 
 minecraft {
@@ -70,7 +70,7 @@ repositories {
 dependencies {
 
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-    implementation fg.deobf("net.darkhax.bookshelf:Bookshelf-Forge-${project.ext.minecraft_version}:${project.ext.bookshelf_version}")
+    implementation fg.deobf("net.darkhax.bookshelf:bookshelf-forge-${project.ext.minecraft_version}:${project.ext.bookshelf_version}")
     compileOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-api-forge:${rei_version}")
     compileOnly fg.deobf("dev.architectury:architectury-forge:10.0.9") // It doesn't actually matter which version we use as this is compileOnly
     compileOnly fg.deobf("me.shedaniel.cloth:cloth-config-forge:12.0.109") // It doesn't actually matter which version we use as this is compileOnly
@@ -211,7 +211,7 @@ task publishCurseForge(type: net.darkhax.curseforgegradle.TaskPublishCurseForge)
     def mainFile = upload(curse_project, jar)
     mainFile.changelogType = 'markdown'
     mainFile.changelog = project.ext.mod_changelog
-    mainFile.addJavaVersion('Java 17')
+    mainFile.addJavaVersion('Java 21')
     mainFile.addRequirement('bookshelf')
     mainFile.releaseType = 'release'
     mainFile.addGameVersion('Client', 'Server')
